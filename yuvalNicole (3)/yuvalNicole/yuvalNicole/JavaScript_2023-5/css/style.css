@@ -1,0 +1,466 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Arial', sans-serif;
+  position: relative; /* נדרש כדי להניח את ה-overlay */
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* שים את התוכן למעלה */
+  margin-top: 0; /* מרווח קטן למעלה */
+}
+
+.header {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: gold;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: black;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  float: right;
+
+
+}
+
+.card {
+  position: relative;
+  margin: 10px;
+  width: calc(25% - 20px); /* תיקון רווחים לכל כרטיס */
+  display: inline-block;
+  vertical-align: top;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+h1 {
+  color: #DCEAF7;
+  width: 100%;
+  text-align: center;
+  font-size: 3em; /* הגדלת גודל הגופן */
+  margin-top: 0; /* מבטל מרווח למעלה */
+
+}
+
+
+.card-image-top {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+
+.search-icon {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: 10px;
+  top: 10px;
+
+}
+#searchInput {
+  text-align: right;
+  direction: rtl; /* הגדרת כיוון הטקסט מימין לשמאל */
+}
+
+#searchButton {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #ccc;
+  border: 2px solid #DCEAF7; /* הגדרת מסגרת בצבע #DCEAF7 */
+  cursor: pointer;
+  width: 150px; /* גודל קבוע כמו כפתור הסינון */
+  text-align: center; /* מיישר את הטקסט במרכז */
+}
+
+#searchButton:hover {
+  background-color: #bbb; /* צבע בעת מעבר עם העכבר */
+}
+
+
+.card-title, .card-text {
+  text-align: center;
+  margin-top: 5px;
+}
+
+/* עיצוב התפריט העליון כך שיהיה צמוד לחלק העליון ולצד הימני ונשאר קבוע במהלך גלילה */
+.navbar {
+  background-color: #333; /* רקע כהה */
+  height: 80px; /* גובה הניווט */
+  display: flex; /* הפיכת התפריט לפלקסיבלי */
+  align-items: center; /* מרכוז תוכן הניווט לאמצע ורטיקלית */
+  justify-content: flex-end; /* יישור התוכן לצד הימני */
+  padding: 0 20px; /* ריווח בשוליים הצדדיים */
+  margin: 0; /* הסרת רווחים מחוץ לניווט */
+  width: 100%; /* רוחב מלא */
+  box-sizing: border-box; /* הגדרת חישוב גודל התיבה לכולל הכל */
+  position: fixed; /* קביעת הניווט במקום קבוע למעלה */
+  top: 0; /* יישור לחלק העליון של המסך */
+  z-index: 1000; /* ודא שהניווט ישאר מעל לתכנים אחרים בעמוד */
+  right: 0; /* יישור לצד הימני של המסך */
+}
+
+/* המשך העיצובים כפי שהגדרת מקודם לכל הפריטים האחרים */
+.navbar ul {
+  list-style: none; /* הסרת נקודות ברשימה */
+  display: flex; /* הצגה בשורה */
+  align-items: center; /* יישור פריטים למרכז */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar img {
+  height: 60px; /* גובה הלוגו */
+  width: auto; /* שמירה על פרופורציות התמונה */
+}
+
+.navbar li {
+  padding: 0 15px; /* ריווח בין הפריטים */
+}
+
+.navbar a {
+  color: white; /* צבע טקסט לבן */
+  text-decoration: none; /* הסרת קו תחת הטקסט */
+  padding: 10px 20px; /* ריווח סביב הטקסט */
+  display: block; /* הצגה בתור בלוק עבור יישור וריווח */
+}
+
+.navbar a:hover {
+  background-color: #555; /* רקע בעת לחיצה */
+}
+
+.search-container {
+  margin: 20px 0;
+  display: flex; /* שינוי ל-Flexbox */
+  justify-content: space-between; /* יישור בין האלמנטים */
+  gap: 10px; /* ריווח שווה בין תיבת הטקסט לכפתור */
+  align-items: center; /* יישור אנכי לאמצע */
+}
+
+#searchInput, #searchButton {
+  padding: 8px;
+  margin: 0 5px;
+}
+
+#searchInput {
+  width: 90%; /* תוכל לשנות את הערך לפיקסלים או אחוזים לפי הצורך */
+
+}
+
+
+
+#searchButton:hover {
+  background-color: #555;
+
+}
+
+body {
+  background-image: url('../images/gedera.jpeg'); /* תחליף לנתיב הנכון של תמונת הרקע */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* שכבת חשיכה מעל לתמונה */
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8); /* שקיפות בשחור */
+  z-index: -1; /* הופך את השכבה להיות מתחת לכל התוכן */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 0; /* אין מרווח למעלה */
+  padding-top: 60px; /* ביטול מרווחים פנימיים */
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.filter-btn {
+  width: 120px; /* רוחב קבוע */
+  height: 40px; /* גובה קבוע */
+  padding: 0; /* ביטול ריווח פנימי כדי לשמור על הגודל הקבוע */
+  font-size: 14px; /* גודל גופן מתאים */
+  text-align: center; /* יישור הטקסט למרכז */
+  justify-content: center;
+  align-items: center; /* מיישר את הטקסט גם אנכית */
+  white-space: nowrap; /* מונע טקסט שבור לשורות */
+
+  margin: 10px;
+  background-color: #ccc;
+  border: 2px solid #DCEAF7; /* הגדרת מסגרת בצבע #DCEAF7 */
+  cursor: pointer;
+}
+
+
+
+
+.card {
+  flex-direction: column; /* משנה את ה-flex-direction כך שתהיה עמודה */
+  align-items: center; /* מיישר את הכרטיסיות לאמצע */
+  justify-content: center; /* מיישר את הכרטיסיות לאמצע */
+  position: relative;
+  margin: 10px;
+  vertical-align: top;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: calc(20% - 20px); /* אורך הכרטיס מותאם לרוחב המסך */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* הוספת מעבר לשינוי גודל וצל */
+  display: flex;
+
+}
+
+.card-image-top {
+  width: 100%; /* אורך התמונה מתאים לגודל הכרטיס */
+  height: 150px; /* גובה קבוע לכל התמונות */
+  object-fit: cover; /* מונע עיוותים בתמונה תוך שמירה על פרופורציות */
+}
+
+.card-title, .card-text {
+  padding: 8px;
+  margin: 0;
+  color: #333;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 100; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+.search {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px; /* Adjust size as needed */
+  cursor: pointer;
+  z-index: 7;
+}
+
+
+.filter-buttons button:hover {
+  background-color: #ddd;
+}
+
+.info-button {
+  display: inline-block;
+  background-color: #f2f2f2; /* צבע רקע */
+  color: black; /* צבע טקסט */
+  text-align: center;
+  padding: 8px 16px; /* ריווח פנימי */
+  border: none; /* הסרת הגבול */
+  border-radius: 25px; /* גודל עיגול הגבול */
+  font-size: 16px; /* גודל הטקסט */
+  cursor: pointer; /* סמן כפתור */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* צל לכפתור */
+  transition: background-color 0.3s, color 0.3s; /* אנימציה בעת לחיצה */
+}
+
+.info-button {
+  margin-top: auto; /* מוסיף אוטומטית את כל המרווח הזמין למעלה, מדחיק את הכפתור למטה */
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+  width: 80%;
+}
+
+.card-text {
+  text-align: right;   /* מיישר את הטקסט לימין */
+  direction: rtl;      /* כיוון הטקסט מימין לשמאל */
+  padding-right: 10px; /* מרחק של 20 פיקסלים מהצד הימני */
+  display: block;      /* מבצע את האלמנט לבלוק */
+  width: 100%;         /* מבטיח שהכרטיס יתפוס את כל הרוחב */
+  box-sizing: border-box; /* כולל padding בתוך החישוב של הרוחב */
+}
+
+.card-title {
+  font-weight: bold;      /* הופך את הטקסט לבולד */
+  text-align: right;      /* מיישר את הטקסט לימין */
+  margin-bottom: 10px;    /* מרחק קטן בין הכותרת לשאר התוכן */
+}
+
+
+.flex-container-nav.hide-mobile {
+  display: none;
+}
+
+
+#nav-button {
+  display: block;
+}
+
+@media only screen and (min-width: 920px) {
+  .card:hover {
+    transform: scale(1.05); /* הגדלה של הכרטיס ב-5% */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* העמקת הצל בעת ההובר */
+  }
+  /* הצגת התפריט פתוח במסך גדול */
+  .flex-container-nav.hide-mobile {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    background-color: darkcyan;
+    position: relative;
+    height: unset;
+    width: 100%;
+    top: 0;
+  }
+
+  /* הכפתור להצגת התפריט יוסתר במסך גדול */
+  #nav-button {
+    display: none;
+  }
+
+}
+
+/* מסך מובייל */
+
+/* עבור מסכים קטנים (מובייל) */
+@media only screen and (max-width: 920px) {
+  /* הצגת תפריט אופקי (Horizontal) */
+  .flex-container-nav.hide-mobile {
+    display: flex;
+    flex-direction: row;  /* הופך את התפריט לאופקי */
+    justify-content: space-between;  /* נותן ריווח בין האלמנטים */
+    background-color: darkcyan;
+    width: 100%;
+    padding: 1rem;
+    position: relative;
+  }
+
+  /* הצגת הכפתור להצגת התפריט */
+  #nav-button {
+    display: block;  /* הצגת כפתור התפריט */
+  }
+
+  /* התפריט יוצג כאשר הכפתור לחוץ */
+  #nav-button:active + .navbar ul,
+  #nav-button:focus + .navbar ul {
+    display: flex;
+  }
+
+  /* שינוי התנהגות של פריטים בתפריט */
+  .navbar ul {
+    display: none;  /* ברירת מחדל שהתפריט לא יופיע */
+    flex-direction: column;
+    width: 30%;
+    position: absolute;
+    background-color: #333;
+    top: 80px;
+    right: 0;
+    text-align: right;
+    z-index: 1001;
+  }
+
+  /* הכפתור יהיה עם מרווחים נוספים */
+  .navbar li {
+    padding: 0 15px;
+  }
+
+  /* כפתור חיפוש יישאר על המיקום הנכון */
+  .search-container {
+    margin-top: 30px; /* אפשר להגדיל את הערך לפי הצורך */
+
+  }
+
+  /* שינוי גודל הטקסט בכרטיסים */
+  h1 {
+    font-size: 26px;  /* גודל טקסט קטן יותר במובייל */
+  }
+
+  /* שינוי עיצוב הכרטיסים במובייל */
+  .cards-container {
+    flex-direction: column; /* משנה את ה-flex-direction כך שתהיה עמודה */
+    align-items: center; /* מיישר את הכרטיסיות לאמצע */
+    justify-content: center; /* מיישר את הכרטיסיות לאמצע */
+  }
+
+  .card {
+    width: calc(80% - 20px); /* כרטיסים רחבים יותר במסך קטן */
+  }
+}
+
+
+
+footer {
+  background-color: #333;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  color: white; /* צבע טקסט לבן */
+  bottom: 0;
+  width: 100%;
+  left: 0; /* מבטיח שהפוטר מתחיל מהצד השמאלי */
+  position: relative; /* משנה את המיקום למיקום יחסי */
+  margin-top: 20px; /* מרווח מעל הפוטר כך שיהיה בתחתית התוכן */
+}
+
+footer a {
+  color: #B4DFF2;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+.highlight {
+  background-color: yellow;
+}

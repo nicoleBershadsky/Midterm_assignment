@@ -1,0 +1,259 @@
+body {
+    font-family: 'Arial', sans-serif;
+    color: black;
+    background-color: #B7B0A5;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* שינוי ל-start כדי שהתוכן יהיה בקטע העליון */
+    height: 100vh; /* גובה המסך */
+    text-align: right;
+    padding-right: 30px;
+    padding-left: 30px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative; /* הוספת רלטיביות כדי להניח את השכבה בתוכה */
+}
+
+/* שכבת חשיכה */
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* וודא שהיא מכסה את כל התמונה */
+    background: rgba(0, 0, 0, 0.5); /* שקיפות */
+    z-index: -1; /* השכבה נשארת מאחור */
+}
+
+/* מוזיאון / תוכן */
+.museum-section {
+    direction: rtl;
+    text-align: justify;
+    margin: 50px 50px 0; /* 100px ריווח מהכותרת למעלה, 50px מצדדים */
+    z-index: 1; /* לוודא שהתוכן מעל לשכבה */
+    line-height: 1.5;
+}
+
+.btn {
+    position: relative; /* לאפשר למרכיבי הכפתור להניח את ההודעה */
+    background-color: #B4DFF2;
+    color: black;
+    padding: 10px 20px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    width: 150px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 14px;
+    display: inline-flex;
+}
+
+.buttons-container {
+    direction: rtl;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    position: fixed;
+    top: 80px;
+    right: 0;
+    z-index: 1000;
+    margin: 20px;
+
+}
+
+#download-message {
+    display: none; /* מוסתר כברירת מחדל */
+    position: absolute;
+    bottom: -30px; /* ממקם את ההודעה קצת מתחת לכפתור */
+    left: 50%;
+    transform: translateX(-50%); /* ממקם את ההודעה במרכז */
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 1;
+}
+
+
+
+#download-message.show {
+    display: block; /* מציג את ההודעה */
+}
+
+h1 {
+    text-align: center;
+    margin-top: 100px; /* ריווח מינימלי בין הכותרת לכפתורים */
+    font-size: 40px;
+    color: black;
+}
+
+.navbar {
+    background-color: #333;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 20px;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    right: 0;
+}
+
+body {
+    padding-top: 80px;
+}
+
+
+
+.navbar img {
+    height: 60px;
+    width: auto;
+}
+
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+.navbar a:hover {
+    background-color: #555;
+}
+footer {
+    background-color: #333;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    color: white; /* צבע טקסט לבן */
+    width: 100%;
+    bottom: 0;
+    left: 0; /* מבטיח שהפוטר מכסה את הרוחב המלא */
+
+    position: relative; /* משנה את המיקום למיקום יחסי */
+    margin-top: 20px; /* מרווח מעל הפוטר כך שיהיה בתחתית התוכן */
+}
+
+
+
+footer a {
+    color: #B4DFF2;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+/* וודא שהתוכן בתורו יתפוס את כל הגובה */
+.museum-section {
+    flex-grow: 1; /* גרום לתוכן למלא את שאר החלל */
+}
+
+/* כלל עבור עיצוב למובייל */
+/* עבור מסכים קטנים (מובייל) */
+@media only screen and (max-width: 920px) {
+    /* הצגת תפריט אופקי (Horizontal) */
+    .flex-container-nav.hide-mobile {
+        display: flex;
+        flex-direction: row;  /* הופך את התפריט לאופקי */
+        justify-content: space-between;  /* נותן ריווח בין האלמנטים */
+        background-color: darkcyan;
+        width: 100%;
+        padding: 1rem;
+        position: relative;
+    }
+
+    /* הצגת הכפתור להצגת התפריט */
+    #nav-button {
+        display: block;  /* הצגת כפתור התפריט */
+    }
+
+    /* התפריט יוצג כאשר הכפתור לחוץ */
+    #nav-button:active + .navbar ul,
+    #nav-button:focus + .navbar ul {
+        display: flex;
+    }
+
+    /* שינוי התנהגות של פריטים בתפריט */
+    .navbar ul {
+        display: none;  /* ברירת מחדל שהתפריט לא יופיע */
+        flex-direction: column;
+        width: 30%;
+        position: absolute;
+        background-color: #333;
+        top: 80px;
+        right: 0;
+        text-align: right;
+        z-index: 1001;
+    }
+
+    /* הכפתור יהיה עם מרווחים נוספים */
+    .navbar li {
+        padding: 0 15px;
+    }
+
+    .buttons-container {
+        position: static; /* הכפתורים יזוזו עם הדף */
+        flex-direction: row; /* הכפתורים בשורה */
+        gap: 5px; /* רווח קטן יותר בין הכפתורים */
+        margin: 10px auto; /* מרווח מכל צד */
+        justify-content: center; /* ממורכזים במרכז */
+        width: auto; /* אין צורך ברוחב קבוע */
+    }
+
+    .btn {
+        width: 120px; /* רוחב קטן יותר לכפתורים */
+        height: 40px; /* גובה קטן יותר לכפתורים */
+        font-size: 12px; /* טקסט קטן יותר */
+        padding: 5px 10px; /* ריווח פנימי קטן יותר */
+    }
+
+    h1 {
+        margin-top: 20px; /* רווח קטן מעל הכותרת */
+        margin-bottom: 10px; /* רווח קטן מתחת לכותרת */
+        text-align: center; /* ממורכז */
+        font-size: 30px; /* כותרת קטנה יותר */
+    }
+
+
+}
+
+footer {
+    background-color: #333;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    color: white; /* צבע טקסט לבן */
+    bottom: 0;
+    width: 100%;
+    left: 0; /* מבטיח שהפוטר מתחיל מהצד השמאלי */
+    position: fixed; /* נשאר תמיד בתחתית */
+    margin-top: 20px; /* מרווח מעל הפוטר כך שיהיה בתחתית התוכן */
+}
+
+footer a {
+    color: #B4DFF2;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}

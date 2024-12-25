@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מורשת אתרי גדרה</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="background-overlay"></div> <!-- שכבת החשיכה -->
+<div class="container">
+    <div class="navbar">
+        <div class="nav-button" id="nav-button">&#9776;</div> <!-- Menu Icon -->
+        <ul class="flex-container">
+            <li><a href="#">אודות</a></li>
+            <li><a href="index.html">בית</a></li>
+            <li><a href="#"><img src="images/LOGO.png" alt="לוגו" /></a></li>
+        </ul>
+    </div>
+
+<div id="modal" class="modal">
+    <span id="closeModal" class="close">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div id="caption"></div>
+</div>
+
+<div class="container">
+    <div class="header">
+        <h1>אתרי מורשת גדרה</h1>
+        <div class="search-container">
+            <button id="searchButton">חפש</button>
+            <input type="text" id="searchInput" placeholder="חיפוש אתר מורשת">
+            
+        </div>
+    </div>
+    <div class="filter-buttons">
+        <button class="filter-btn" data-filter="groups">מותאם לקבוצות</button>
+        <button class="filter-btn" data-filter="kids">מותאם לילדים</button>
+        <button class="filter-btn" data-filter="accessible">נגיש</button>
+    </div>
+    <div id="itemsContainer" class="cards-container"></div>
+</div>
+<script src="js/main.js"></script>
+    <footer>
+        <p>© התמונה נלקחה מ <a href="https://mesterhomes.co.il/city/gedera/" target="_blank" rel="noopener noreferrer">מאסטר הומס</a></p>
+    </footer>
+</body>
+</html>
